@@ -97,6 +97,10 @@ async function handleRequest(request) {
 	requireHttps(request);
 	const { pathname } = new URL(request.url);
 
+	if (pathname === "/") {
+		return new Response("All your base are belong to us", { status: 202 });
+	}
+
 	if (pathname === "/favicon.ico" || pathname === "/robots.txt") {
 		return new Response(null, { status: 204 });
 	}
